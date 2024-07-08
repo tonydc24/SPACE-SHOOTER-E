@@ -224,8 +224,18 @@ public class SpaceshipController : MonoBehaviour
 
         //MOVE TO LEVELMANAGER AS RELOAD() ==> 10pts Ready!
         LevelManager levelManager = FindObjectOfType<LevelManager>();
-        levelManager.Reload();
 
-        //GO TO GAMEOVER WHEN HasLives IS FALSE => 10pts
+        if (UIController.Instance.HasLives() == false)
+        {
+            levelManager.Reload();
+        }
+        else 
+        {
+            
+            levelManager.NextLevel();
+        }
+        
+
+        //GO TO GAMEOVER WHEN HasLives IS FALSE => 10pts Ready?
     }
 }
