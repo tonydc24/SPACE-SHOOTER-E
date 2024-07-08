@@ -94,6 +94,7 @@ public class FollowAndRetreatAI : MonoBehaviour
 
         GameObject bullet =
             Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+        bullet.transform.Rotate(0, 0, 90);
 
         Vector2 direction = (firePoint.position - transform.position).normalized;
 
