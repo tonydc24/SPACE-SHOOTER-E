@@ -12,6 +12,12 @@ public class BossController : MonoBehaviour
 
     public void TakeDamage()
     {
+        SpriteRenderer childRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (childRenderer != null)
+        {
+            StartCoroutine(ChangeColorRoutine(childRenderer));
+        }
+
         health--;
         if (health <= 0)
         {
@@ -22,5 +28,16 @@ public class BossController : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    private IEnumerator ChangeColorRoutine(SpriteRenderer renderer)
+    {
+        Color originalColor = renderer.color;
+
+        renderer.color = Color.red;
+
+        yield return new WaitForSeconds(0.5f);
+
+        renderer.color = originalColor;
     }
 }
